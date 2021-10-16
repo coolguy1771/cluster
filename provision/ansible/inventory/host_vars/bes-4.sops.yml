@@ -1,0 +1,35 @@
+kind: Secret
+ansible_user: ENC[AES256_GCM,data:tVm9UKZh,iv:tObrLvMXc8CCRwc7E1KjYueg8919r60Nsi0Xq9pRyvY=,tag:u4ecdhnan+hyI65CnBhAPQ==,type:str]
+ansible_become_pass: ENC[AES256_GCM,data:9V3i1R2ra3N33Rn7,iv:nDcjh+beJN5ZRAxXwijuLEXKhrm1LSP14QH4OqaUaKs=,tag:lF5eSnkXShq9K+dbtTpmbg==,type:str]
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age: []
+    lastmodified: "2021-10-16T20:47:23Z"
+    mac: ENC[AES256_GCM,data:Ij39F3/jeXx8YO8JGJl0OuRl4d0awcsQHoQwSaxQ6EHl7thaRzhXp/lqA5FgX9aNBqvscpfoDkHqPJSh/+rbzwS61wBUgsOlDhHF5e7CfLlRJ8/dhU/P1WN6M4snGI+jU0X4pt3Efuhp4jS0+jc22/opV+ZOv74Gx86qo1fZdxQ=,iv:XYkHPnx0XxfdlKyI5jd+psn8KXAwqP/BCv1yrPsRA8Y=,tag:+77DO+OzOaHA3yvBxbndwg==,type:str]
+    pgp:
+        - created_at: "2021-09-27T20:13:22Z"
+          enc: |
+            -----BEGIN PGP MESSAGE-----
+
+            hQIMAxZrgHWJPExZAQ/7BCNJJkqWu/LsiwvgezHGvdFwy6fiiPSPS7cxSQf4ZyNZ
+            mfxbGR9ZpyOZT9CFEDfoRmjkxvoKwyUAKfve2kvoH75K1mA7mzf5hmITBHu3JJPi
+            KeSEvuzfsWF5S4b1cHgWtLNR4TlfqrdkCU/frzW0tg0O+dOUyBAoydHJ1RxjQ7LX
+            vNGGhd4Lx7RLyrYC1Z00jk4WcjIwwYeII38lrr3YyZtuWTioo8iC+IYJJaZ0XzIm
+            +3SlBDCpnGgxQ/9YG3LFxPCe5ivQfcjHnkX63HD/tcO3S4UyszCx50x56he/fQSy
+            bl5Czi78SLj2thZKHCd0jfArGs+zxlgDhbE7Y0lHEpA9OlBVvxW9XAy8CPyDfO1y
+            qFkH0WevhL7wh25eXL989wutcJNdBCXEpTyC1Rvt8RRUWYnKCYfnnPV2AcvuFf58
+            rp4koeinGNsQIUKxpWlUrFQPv4+j93V04IA87e9dFmbhxET21LmmD0k3TweG5YPJ
+            yJ8R7j5cpwVjTK/hiwKnf5Lto3reWbymD34kNcbBlHnUkSgxZesir3wgwn44YK7l
+            QJHd4CxmTjcuz+ayTr+wEbOM3Bj+JWyHxRhMaI8STe2JINx59vDIRNnY5pmOoswh
+            JWyRkHi/ymykOD9/YgtttgwBTgZPchkA1qXcKtI/jKD7tiUguepbOZZ/uK8kqTPU
+            aAEJAhWA+E27MAg1kVOYK1Ek//Z7wP/Y4mVGP+M2n5F+MR0D+AK7YqCJELnL0ND0
+            0ATuS/MARZPnY3gUGlNkSJ7Bw8h0Jj24LhmGjCMMpnD1lEfkc6oRquKiTVx8kJ3L
+            IKejc7NZLJtb
+            =DY40
+            -----END PGP MESSAGE-----
+          fp: 8AD15E7264D13B2F0DBA993A2D5520C7A1FAFB9C
+    unencrypted_regex: ^(kind)$
+    version: 3.7.1

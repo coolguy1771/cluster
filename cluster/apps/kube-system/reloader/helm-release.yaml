@@ -19,3 +19,4 @@ spec:
   values:
     nameOverride: reloader
     fullnameOverride: reloader
+    

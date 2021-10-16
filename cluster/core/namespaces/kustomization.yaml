@@ -4,3 +4,10 @@ resources:
   - cert-manager.yaml
   - metallb-system.yaml
   - networking.yaml
+  - auth.yaml
+  - game-servers.yaml
+  - rook-ceph.yaml
+  - storage.yaml
+  - tools.yaml
+  - velero.yaml
+  - website.yaml
