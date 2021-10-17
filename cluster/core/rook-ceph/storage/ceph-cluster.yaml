@@ -61,21 +61,14 @@ spec:
     useAllNodes: false
     useAllDevices: false
     config:
-      metadataDevice:
       osdsPerDevice: "1"
     nodes:
-      - name: "bes-0"
-        devices:
-          - name: "sdb"
-      - name: "bes-1"
-        devices:
-          - name: "sdb"
-      - name: "bes-2"
-        devices:
-          - name: "sdb"
       - name: "bes-3"
         devices:
           - name: "sdb"
       - name: "bes-4"
+        devices:
+          - name: "sdb"
+      - name: "bes-5"
         devices:
           - name: "sdb"

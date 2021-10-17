@@ -6,3 +6,12 @@ resources:
   - kube-system
   - networking
   - system-upgrade
+  - auth
+  - flux-system
+  - monitoring
+  - networking
+  - storage
+  - system-upgrade
+  - tools
+  - velero
+  - website

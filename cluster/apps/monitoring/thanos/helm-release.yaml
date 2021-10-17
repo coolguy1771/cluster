@@ -32,7 +32,9 @@ spec:
         hostname: "thanos.${SECRET_DOMAIN}"
         ingressClassName: "traefik"
         annotations:
-        ##TODO add annotations
+          cert-manager.io/cluster-issuer: letsencrypt-production
+          external-dns.alpha.kubernetes.io/target: "ipv4.${SECRET_DOMAIN}"
+          external-dns/is-public: "true"
           traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
         tls: true
     existingObjstoreSecret: thanos-objstore
