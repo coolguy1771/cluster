@@ -9,8 +9,9 @@ export PROJECT_DIR=$(git rev-parse --show-toplevel)
 # shellcheck disable=SC2155
 export GPG_TTY=$(tty)
 
-# shellcheck disable=SC1091
+set -a
 source "${PROJECT_DIR}/.config.env"
+set +a
 
 show_help() {
 cat << EOF
