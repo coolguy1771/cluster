@@ -21,7 +21,7 @@ spec:
     alertmanager:
       config:
         global:
-          slack_api_url: "${SECRET_ALERT_MANAGER_DISCORD_WEBHOOK}"
+          slack_api_url: "${SECRET_ALERT_MANAGER_WEBHOOK}"
           resolve_timeout: 5m
         receivers:
           - name: "null"
@@ -36,9 +36,7 @@ spec:
                 text: >-
                   {{ range .Alerts -}}
                     **Alert:** {{ .Annotations.title }}{{ if .Labels.severity }} - `{{ .Labels.severity }}`{{ end }}
-
                   **Description:** {{ if ne .Annotations.description ""}}{{ .Annotations.description }}{{else}}N/A{{ end }}
-
                   **Details:**
                     {{ range .Labels.SortedPairs }} • *{{ .Name }}:* `{{ .Value }}`
                     {{ end }}
@@ -62,26 +60,34 @@ spec:
               severity: "critical"
             target_match:
               severity: "warning"
+            # Apply inhibition if the alertname is the same.
             equal: ["alertname", "namespace"]
+        templates: ["*.tmpl"]
+      alertmanagerSpec:
+        storage:
+          volumeClaimTemplate:
+            spec:
+              storageClassName: nfs-client
+              resources:
+                requests:
+                  storage: 10Gi
       ingress:
         enabled: true
         pathType: Prefix
-        ingressClassName: "traefik"
+        ingressClassName: traefik
         annotations:
           traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
+          hajimari.io/enable: "true"
+          hajimari.io/icon: "torch"
+          cert-manager.io/cluster-issuer: letsencrypt-production
+          external-dns.alpha.kubernetes.io/target: "ipv4.${SECRET_DOMAIN}"
+          external-dns/is-public: "true"
         hosts:
           - "alert-manager.${SECRET_DOMAIN}"
         tls:
           - hosts:
               - "alert-manager.${SECRET_DOMAIN}"
-      alertmanagerSpec:
-        storage:
-          volumeClaimTemplate:
-            spec:
-              storageClassName: "rook-ceph-block"
-              resources:
-                requests:
-                  storage: 1Gi
+            secretName: "alert-manager-tls"
     nodeExporter:
       serviceMonitor:
         relabelings:
@@ -102,7 +108,7 @@ spec:
         dashboards:
           multicluster:
             etcd:
-              enabled: true
+              enabled: false
     kubelet:
       enabled: true
       serviceMonitor:
@@ -116,34 +122,31 @@ spec:
     kubeControllerManager:
       enabled: true
       endpoints:
-        - 172.16.20.20
-        - 172.168.20.21
-        - 172.168.20.22
+        - 10.10.10.50
+        - 10.10.10.51
+        - 10.10.10.52
     kubeScheduler:
       enabled: true
       endpoints:
-        - 172.16.20.20
-        - 172.168.20.21
-        - 172.168.20.22
+        - 10.10.10.50
+        - 10.10.10.51
+        - 10.10.10.52
     kubeProxy:
       enabled: true
       endpoints:
-        - 172.16.20.20
-        - 172.16.20.21
-        - 172.168.20.22
+        - 10.10.10.50
+        - 10.10.10.51
+        - 10.10.10.52
     kubeEtcd:
       enabled: true
       endpoints:
-        - 172.16.20.20
-        - 172.16.20.21
-        - 172.168.20.22
+        - 10.10.10.50
+        - 10.10.10.51
+        - 10.10.10.52
       service:
         enabled: true
         port: 2381
         targetPort: 2381
-    # Setting this option to 0 disabled CPU limits
-    prometheusOperator:
-      configReloaderCpu: 0
     prometheus:
       ingress:
         enabled: true
@@ -151,14 +154,18 @@ spec:
         ingressClassName: "traefik"
         annotations:
           traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
+          external-dns.alpha.kubernetes.io/target: "ipv4.${SECRET_DOMAIN}"
+          external-dns/is-public: "true"
+          hajimari.io/enable: "true"
+          hajimari.io/icon: "torch"
+          cert-manager.io/cluster-issuer: letsencrypt-production
         hosts:
           - "prometheus.${SECRET_DOMAIN}"
         tls:
           - hosts:
               - "prometheus.${SECRET_DOMAIN}"
+            secretName: "prometheus-tls"
       thanosService:
-        enabled: true
-      thanosServiceMonitor:
         enabled: true
       prometheusSpec:
         replicas: 1
@@ -173,7 +180,7 @@ spec:
         storageSpec:
           volumeClaimTemplate:
             spec:
-              storageClassName: "rook-ceph-block"
+              storageClassName: nfs-client
               resources:
                 requests:
                   storage: 10Gi
@@ -183,10 +190,3 @@ spec:
           objectStorageConfig:
             name: thanos-objstore
             key: objstore.yml
-        additionalScrapeConfigs:
-          - job_name: 'minio-job'
-            honor_timestamps: true
-            metrics_path: /minio/v2/metrics/cluster
-            static_configs:
-              - targets:
-                  - "minio.storage:9000"
