@@ -9,7 +9,6 @@ resources:
   - flux-system
   - monitoring
   - storage
-  - system-upgrade
   - tools
   - velero
   - website
