@@ -48,7 +48,7 @@ spec:
       enabled: true
       certManager: true
       pathType: ImplementationSpecific
-      hostname: ${SECRET_DOMAIN_STUDIO}
+      hostname: ${SECRET_DOMAIN}
       path: /
       annotations:
         traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
