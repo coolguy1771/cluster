@@ -64,6 +64,7 @@ spec:
         tls:
           enabled: true
           options: "default"
+        exposedPort: 8443
       metrics:
         port: 8082
         expose: true
