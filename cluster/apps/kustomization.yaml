@@ -8,7 +8,6 @@ resources:
   - auth
   - flux-system
   - monitoring
-  - networking
   - storage
   - system-upgrade
   - tools
