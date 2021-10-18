@@ -24,12 +24,15 @@ spec:
     podSecurityContext:
       enabled: true
       fsGroup: 1001
+      sysctls: []
+
     containerSecurityContext:
       enabled: true
       runAsUser: 1001
       runAsNonRoot: true
     containerPorts:
       http: 8080
+      https: "8443"
     cloneStaticSiteFromGit:
       enabled: true
       image:
@@ -45,7 +48,7 @@ spec:
       enabled: true
       certManager: true
       pathType: ImplementationSpecific
-      hostname: ${SECRET_DOMAIN}
+      hostname: ${SECRET_DOMAIN_STUDIO}
       path: /
       annotations:
         traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
@@ -56,6 +59,22 @@ spec:
       tls: true
     metrics:
       enabled: false
+      image:
+        registry: docker.io
+        repository: bitnami/nginx-exporter
+        tag: 0.9.0-debian-10-r146
+        pullPolicy: IfNotPresent
+        pullSecrets: []
+      podAnnotations: {}
+      securityContext:
+        enabled: true
+        runAsUser: 1001
+      service:
+        port: 9113
+        annotations:
+          prometheus.io/scrape: "true"
+          prometheus.io/port: "{{ .Values.metrics.service.port }}"
+        requests: {}
       serviceMonitor:
         enabled: false
         namespace: "monitoring"
