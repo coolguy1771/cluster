@@ -1,0 +1,30 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
+    cert-manager.io/cluster-issuer: letsencrypt-production
+    hajimari.io/enable: "true"
+    hajimari.io/icon: "gitlab"
+    kubernetes.io/ingress.class: traefik
+    external-dns.alpha.kubernetes.io/target: "ipv4.${SECRET_DOMAIN}"
+    external-dns/is-public: "true"
+  #  hajimari.io/icon:
+  name: gitlab
+  namespace: networking
+spec:
+  rules:
+  - host: git.${SECRET_DOMAIN}
+    http:
+      paths:
+      - pathType: Prefix
+        path: /
+        backend:
+          service:
+            name: gitlab
+            port:
+              number: 9080
+  tls:
+  - hosts:
+    - git.${SECRET_DOMAIN}
+    secretName: gitlab-tls
