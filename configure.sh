@@ -106,7 +106,7 @@ _has_envar() {
 _has_valid_ip() {
     local ip="${1}"
     local variable_name="${2}"
-    
+
     if ! ipcalc "${ip}" | awk 'BEGIN{FS=":"; is_invalid=0} /^INVALID/ {is_invalid=1; print $1} END{exit is_invalid}' >/dev/null 2>&1; then
         _log "DEBUG" "Variable '${variable_name}' has an invalid IP address '${ip}'"
         exit 1
@@ -121,14 +121,14 @@ verify_gpg_fp() {
 
     if ! gpg --list-keys "${BOOTSTRAP_PERSONAL_KEY_FP}" >/dev/null 2>&1; then
          _log "ERROR" "Invalid Personal GPG FP ${BOOTSTRAP_PERSONAL_KEY_FP}"
-        exit 1    
+        exit 1
     else
         _log "DEBUG" "Found Personal GPG Fingerprint '${BOOTSTRAP_PERSONAL_KEY_FP}'"
     fi
 
     if ! gpg --list-keys "${BOOTSTRAP_FLUX_KEY_FP}" >/dev/null 2>&1; then
          _log "ERROR" "Invalid Flux GPG FP '${BOOTSTRAP_FLUX_KEY_FP}'"
-        exit 1    
+        exit 1
     else
          _log "DEBUG" "Found Flux GPG Fingerprint '${BOOTSTRAP_FLUX_KEY_FP}'"
     fi
