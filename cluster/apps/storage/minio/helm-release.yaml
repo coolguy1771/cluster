@@ -3,7 +3,7 @@ apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
   name: minio
-  namespace: tools
+  namespace: storage
 spec:
   interval: 5m
   chart:
@@ -17,10 +17,11 @@ spec:
   values:
     image:
       repository: quay.io/minio/minio
-      tag: RELEASE.2021-10-10T16-53-30Z
+      tag: RELEASE.2021-10-13T00-23-17Z
     nameOverride: minio
     env:
       MINIO_PROMETHEUS_AUTH_TYPE: "public"
+      MINIO_UPDATE: "off"
       TZ: "America/New_York"
     envFrom:
       - secretRef:
