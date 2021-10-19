@@ -73,12 +73,11 @@ spec:
       postgresqlPassword: "${SECRET_AUTHENTIK_POSTGRES_PASSWORD}"
       persistence:
         enabled: true
-        storageClass: nfs-client
+        storageClass: rook-ceph-block
         accessModes:
           - ReadWriteOnce
     redis:
       enabled: true
-      storageClass: nfs-client
     prometheus:
       serviceMonitor:
         create: true
