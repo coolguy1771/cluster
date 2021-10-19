@@ -5,3 +5,4 @@ resources:
   - ceph-cluster.yaml
   - storage-class.yaml
   - snapshot-class.yaml
+  - ceph-file-system.yaml
