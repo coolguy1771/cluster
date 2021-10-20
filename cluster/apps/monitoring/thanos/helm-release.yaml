@@ -32,10 +32,10 @@ spec:
         hostname: "thanos.${SECRET_DOMAIN}"
         ingressClassName: "traefik"
         annotations:
+          traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
           cert-manager.io/cluster-issuer: letsencrypt-production
           external-dns.alpha.kubernetes.io/target: "ipv4.${SECRET_DOMAIN}"
           external-dns/is-public: "true"
-          traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
         tls: true
     existingObjstoreSecret: thanos-objstore
     queryFrontend:
@@ -50,7 +50,8 @@ spec:
       enabled: true
       persistence:
         enabled: true
-        size: 5GiB
+        size: 5Gi
+        storageClass: rook-ceph-block
     ruler:
       enabled: false
     metrics:
