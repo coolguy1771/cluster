@@ -45,7 +45,12 @@ tasks:
     dir: provision/ansible
     cmds:
       - "ansible-playbook -i {{.ANSIBLE_INVENTORY_DIR}}/hosts.yml {{.ANSIBLE_PLAYBOOK_DIR}}/k3s-nuke.yml"
-
+  
+  playbook:rook-ceph-nuke:
+    desc: Destroy rook-ceph on worker nodes
+    dir: provision/ansible
+    cmds:
+      - "ansible-playbook -i {{.ANSIBLE_INVENTORY_DIR}}/hosts.yml {{.ANSIBLE_PLAYBOOK_DIR}}/rook-ceph-nuke.yml"
   adhoc:ping:
     desc: Ping all the hosts
     dir: provision/ansible
