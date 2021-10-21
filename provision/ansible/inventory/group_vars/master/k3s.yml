@@ -8,20 +8,10 @@ k3s_control_node: true
 # (dict) k3s settings for all control-plane nodes
 k3s_server:
   node-ip: "{{ ansible_host }}"
-  tls-san:
-    # kube-vip
-    - "{{ kubevip_address }}"
-  # Disable Docker - this will use the default containerd CRI
   docker: false
-  flannel-backend: "none" # This needs to be in quotes
   disable:
-    # Disable flannel - replaced with Calico
-    - flannel
-    # Disable traefik - installed with Flux
     - traefik
-    # Disable servicelb - replaced with metallb and install with Flux
     - servicelb
-    # Disable metrics-server - installed with Flux
     - metrics-server
     - local-storage
   disable-network-policy: true
