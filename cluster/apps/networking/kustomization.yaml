@@ -5,5 +5,4 @@ resources:
   - traefik
   - error-pages
   - external-dns
-  - calico-system
   - external
