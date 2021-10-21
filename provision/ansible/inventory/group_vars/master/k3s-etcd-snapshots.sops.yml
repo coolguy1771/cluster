@@ -3,8 +3,8 @@ kind: Secret
 etcd_snapshot_schedule_cron: ENC[AES256_GCM,data:yKVKxCaU46RXCqMU,iv:9nKATRBIkxbgFzlarZaHv0cfRIvz069plHYxB2TntMI=,tag:Kk99ebYM9W0OYnuFOHLW6g==,type:str]
 etcd_snapshot_retention: ENC[AES256_GCM,data:Zg==,iv:Zy3q5HVJOJq6/y0wpMMOnWo0rrd3uHNp+oK6nLofKIo=,tag:NqktW76PW1blvulQOQ90sw==,type:int]
 etcd_s3: ENC[AES256_GCM,data:3AmM/Q==,iv:+u/Qfkj7QvGrBAuTerywNqzz7KXmP14WEEu9lOH8Kj4=,tag:LaGtZldDXGm+hOyETJqcbw==,type:bool]
-etcd_s3_endpoint: ENC[AES256_GCM,data:sZhTaUAG3xtS/4Qoc6EkizPDTs1q5+OCYwng,iv:C5WNdCDuQn/dv1Xwcq62UfM3CmfhDfffz2eeztlkuzI=,tag:n6Q82ZKsABcshj+gJ6GuPg==,type:str]
-etcd_s3_bucket: ENC[AES256_GCM,data:kDedhQ==,iv:9Tzs3WcjdJFEr0bETMlVwSLmU4pen8Tdn9MOkdu7LHo=,tag:Gi0Jsz5bX6DeeO9kTS+ruw==,type:str]
+etcd_s3_endpoint: ENC[AES256_GCM,data:SvEQj6idmO8qXYkO5XMsKxl9zg==,iv:rvTV9Tu4IClbXUc+gPkPiAPMw4RgX7btnYZIcEilxRo=,tag:+wJYyFInGSafQFnODXjaKg==,type:str]
+etcd_s3_bucket: ENC[AES256_GCM,data:w/rFYzOzMA==,iv:plKI8AXzkgHpCP6bee3dyfywFCnQlpeYbgM2mdGzrsc=,tag:r9SSNFZQc2alJfXQ0eeG1g==,type:str]
 etcd_s3_access_key: ENC[AES256_GCM,data:vF9EsV9EJ1b3sGzi4TlKn2L7fLUZFVyfTQHPK1xZG6o=,iv:YT+p35YoNEfhQ66nLvoy25SrLTCM6ZWbM8Kwbvb3PWY=,tag:aVzDgyafivMRMDDMygrECg==,type:str]
 etcd_s3_secret_key: ENC[AES256_GCM,data:fDUcJQ7UzINLYIumtrE80mOH6WIyuX1niPHNLV/uTEI=,iv:7rGFbY+yypXoTL3zKwrE6wkBc1H3mIH8b7nCKG+Ps50=,tag:TiNOYp23VrMMnYPrhDcC+A==,type:str]
 sops:
@@ -13,8 +13,8 @@ sops:
     azure_kv: []
     hc_vault: []
     age: []
-    lastmodified: "2021-10-21T16:25:49Z"
-    mac: ENC[AES256_GCM,data:jKM/KrjSn8kW9J1XgkA4Gm6bZ6UoclLknGYWpW1WlrVz/l2J7YvTxX6MJcoAgh4pdOLRla2naMnxIYNhOMhxW6BSQ8zjrFV1Gka8WQgDPVtSOIVHLHugRziOrJbJYq5IZaE+AyDgUIQnozrKefLewUg5wWa8QEse500Ixo62VgM=,iv:xCyBoQKNtCV+dhVRoTCxphn1WtO1LIUG7ER6PVLRSBU=,tag:NknxJJdP8M2lT1o8J4h16w==,type:str]
+    lastmodified: "2021-10-21T18:25:31Z"
+    mac: ENC[AES256_GCM,data:aNkm+FZIUapRQoeBQqya/AYhxdiNDlhqkgEZ0X+MpjId5r1K+kIdzt3cZ/YQZ9Sylpdxr6V7A1fxvH2KLYY8fW34Fi59mW+f1mkANnlwuJPj4O9Y+BzM7YHj0BeTN9slQ1a30iBTaQTjueu08uw5V/lzHUjl6l/UBWLG4FazaXY=,iv:UvBZHwN/0ceE6DoEcLw6rcFKnHWqEftenGLInanbPo4=,tag:83NRtIUhN5SDrUa3E2V+nw==,type:str]
     pgp:
         - created_at: "2021-10-21T16:25:47Z"
           enc: |
