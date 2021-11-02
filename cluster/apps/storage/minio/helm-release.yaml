@@ -21,7 +21,7 @@ spec:
     nameOverride: minio
     env:
       MINIO_PROMETHEUS_AUTH_TYPE: "public"
-      MINIO_UPDATE: "off"
+      MINIO_UPDATE: "on"
       TZ: "America/New_York"
     envFrom:
       - secretRef:
