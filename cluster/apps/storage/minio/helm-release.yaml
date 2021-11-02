@@ -21,8 +21,9 @@ spec:
     nameOverride: minio
     env:
       MINIO_PROMETHEUS_AUTH_TYPE: "public"
-      MINIO_UPDATE: "on"
+      MINIO_UPDATE: "off"
       TZ: "America/New_York"
+      MINIO_DOMAIN: s3.${SECRET_DOMAIN}
     envFrom:
       - secretRef:
           name: minio
@@ -75,7 +76,7 @@ spec:
         type: custom
         volumeSpec:
           nfs:
-            server: "${NAS_ADDR}"
+            server: ${NAS_ADDR}
             path: /mnt/user/blackelement/minio
         mountPath: /data
     podAnnotations:
