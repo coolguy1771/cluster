@@ -1,5 +1,5 @@
 {
-  "enabled": true,
+  "enabled": false,
   "timezone": "America/New_York",
   "semanticCommits": "enabled",
   "dependencyDashboard": true,
